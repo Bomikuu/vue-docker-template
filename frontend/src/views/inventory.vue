@@ -16,30 +16,13 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1.</td>
-              <td>Chicken Parmesan</td>
-              <td>
-                2020/07/21
-              </td>
-              <td><span class="badge bg-danger">20</span></td>
-            </tr>
-            <tr>
-              <td>2.</td>
-              <td>Chicken Parmesan with Fries</td>
-              <td>
-                2020/07/21
-              </td>
-              <td><span class="badge bg-danger">20</span></td>
-            </tr>
-            <tr>
-              <td>3.</td>
-              <td>Roasted Chicken BBQ</td>
-              <td>
-                2020/07/21
-              </td>
-              <td><span class="badge bg-danger">20</span></td>
-            </tr>
+            <InventoryCell
+              v-for="(item, index) in getInventoryList"
+              :key="`item-cell-${index}`"
+              :item="item"
+              :index="index"
+              :get-item="getCurrentItem"
+            ></InventoryCell>
           </tbody>
         </table>
       </div>
@@ -61,17 +44,19 @@
       v-if="showInventoryModal"
       :show-dialog="showInventoryModal"
       :toggle-modal="toggleInventoryModal"
-      :item-detail="currentProduct"
+      :item-detail="currentInventory"
     ></AddRecord>
   </div>
 </template>
 
 <script>
 import AddRecord from "@/components/forms/addrecord.vue";
+import InventoryCell from "@/components/items/inventorycell.vue";
 
 export default {
   components: {
     AddRecord,
+    InventoryCell,
   },
   data: () => {
     return {
@@ -90,6 +75,10 @@ export default {
     },
     addNewInventory() {
       this.currentInventory = null;
+      this.toggleInventoryModal();
+    },
+    getCurrentItem(item) {
+      this.currentInventory = item;
       this.toggleInventoryModal();
     },
   },

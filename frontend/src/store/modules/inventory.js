@@ -3,25 +3,25 @@ export default {
     namespaced: true,
     inventoryList: [
       {
-        name: "Chicken Parmesan",
+        product: "Chicken Parmesan",
         quantity: 20,
-        date: "2020/17/02",
+        date: "2020-17-02",
       },
       {
-        name: "Chicken Parmesan with Fries",
+        product: "Chicken Parmesan with Fries",
         quantity: 20,
-        date: "2020/17/02",
+        date: "2020-17-02",
       },
       {
-        name: "Roasted Chicken BBQ",
+        product: "Roasted Chicken BBQ",
         quantity: 20,
-        date: "2020/17/02",
+        date: "2020-17-02",
       },
     ],
   },
-  mutation: {
+  mutations: {
     setInventoryItem(state, invent) {
-      state.inventoryList.unshift(invent);
+      state.inventoryList.push(invent);
     },
   },
   actions: {},

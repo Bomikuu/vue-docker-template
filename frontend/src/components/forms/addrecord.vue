@@ -18,7 +18,7 @@
             <v-col cols="12">
               <v-text-field
                 v-model="inventoryData.quantity"
-                label="Price*"
+                label="Quantity*"
                 required
               ></v-text-field>
             </v-col>
@@ -38,12 +38,15 @@
                     v-on="on"
                   ></v-text-field>
                 </template>
-                <v-date-picker v-model="date" scrollable>
+                <v-date-picker v-model="inventoryData.date" scrollable>
                   <v-spacer></v-spacer>
                   <v-btn text color="primary" @click="showDateModal = false"
                     >Cancel</v-btn
                   >
-                  <v-btn text color="primary" @click="$refs.dialog.save(date)"
+                  <v-btn
+                    text
+                    color="primary"
+                    @click="$refs.dialog.save(inventoryData.date)"
                     >OK</v-btn
                   >
                 </v-date-picker>
